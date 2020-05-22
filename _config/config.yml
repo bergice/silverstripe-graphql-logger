@@ -1,0 +1,14 @@
+---
+Name: graphql-logger
+Before:
+  - graphql
+After:
+  - graphqlconfig
+  - admin-injector
+---
+
+SilverStripe\Core\Injector\Injector:
+  SilverStripe\GraphQL\Manager.default:
+    properties:
+      Middlewares:
+        MyMutationLoggingMiddleware: '%$LoggingMiddleware'
